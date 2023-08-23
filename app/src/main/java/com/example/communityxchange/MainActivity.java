@@ -3,6 +3,7 @@ package com.example.communityxchange;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -53,8 +54,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //create intent to open new activity
-                Intent test_intent = new Intent(MainActivity.this, Test.class);
+                Intent test_intent = new Intent(MainActivity.this, upload.class);
                 startActivity(test_intent);
+            }
+        });
+
+        //pop-out about message
+        ImageView about_imageview = (ImageView) findViewById(R.id.imageView_about);
+        about_imageview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialog();
             }
         });
 
@@ -68,6 +78,24 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(test_intent);
             }
         });
+    }//end of onCreate
 
+    //method for the dialog
+    private void showDialog(){
+        Dialog dialog = new Dialog(this, R.style.DialogStyle    );
+        dialog.setContentView(R.layout.about_dialog);
+
+        dialog.getWindow().setBackgroundDrawableResource(R.drawable.dialog_background);
+
+        Button okBtn = dialog.findViewById(R.id.button_ok);
+        okBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
     }
-}
+
+}//end of Class

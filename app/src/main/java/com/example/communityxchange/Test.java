@@ -11,6 +11,6 @@ public class Test extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
         //set the title of top of the screen
-        getSupportActionBar().setTitle("Test Activity Screen");
+        //getSupportActionBar().setTitle("Test Activity Screen");
     }
 }
