@@ -84,6 +84,12 @@ public class upload2 extends AppCompatActivity {
     }
 
     public void saveData(){
+        //null check for the image
+        if (uri == null) {
+            // Handle the case where no image has been selected
+            Toast.makeText(this, "No Image Selected", Toast.LENGTH_SHORT).show();
+            return;
+        }
         StorageReference storageReference = FirebaseStorage.getInstance().getReference()
                 .child("Business" +
                         " Images").child(uri.getLastPathSegment());
@@ -119,6 +125,13 @@ public class upload2 extends AppCompatActivity {
         String desc = uploadDesc.getText().toString();
         String contact = uploadContact.getText().toString();
         String owner = uploadOwner.getText().toString();
+
+        //null checks for the data fields
+        if (name.isEmpty() || desc.isEmpty() || contact.isEmpty() || owner.isEmpty()) {
+            // Handle the case where any of the fields are empty
+            Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         DataClass dataClass = new DataClass(name, desc, contact,owner, imageURL);
 
