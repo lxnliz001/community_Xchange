@@ -74,17 +74,6 @@
                 android:gravity="start|center_vertical"
                 android:textColor="@color/inethi_alt_blue"/>
 
-            <EditText
-                android:id="@+id/uploadContactDetails_spare1"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:background="@drawable/blue_border"
-                android:layout_marginTop="10dp"
-                android:padding="10dp"
-                android:hint="Enter Business Contact Details_email"
-                android:gravity="start|center_vertical"
-                android:textColor="@color/inethi_alt_blue"/>
-
 
             <EditText
                 android:id="@+id/uploadBusinessOwner"

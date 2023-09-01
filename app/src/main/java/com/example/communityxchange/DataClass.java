@@ -40,4 +40,9 @@ public class DataClass {
     public String getDataImage() {
         return dataImage;
     }
+
+    //code for retrieved data from firebase and displaying
+    public DataClass(){
+
+    }
 }

@@ -16,6 +16,9 @@
         android:theme="@style/Theme.CommunityXchange"
         tools:targetApi="31">
         <activity
+            android:name=".DetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".upload2"
             android:exported="false" />
         <activity

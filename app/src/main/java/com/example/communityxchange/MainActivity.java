@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //button --> open test activity
-        Button test_button = findViewById(R.id.test_button);
+        /*Button test_button = findViewById(R.id.test_button);
         test_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent test_intent = new Intent(MainActivity.this, Test.class);
                 startActivity(test_intent);
             }
-        });
+        });*/
     }//end of onCreate
 
     //method for the dialog

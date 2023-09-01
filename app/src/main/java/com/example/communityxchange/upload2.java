@@ -127,9 +127,38 @@ public class upload2 extends AppCompatActivity {
         String owner = uploadOwner.getText().toString();
 
         //null checks for the data fields
-        if (name.isEmpty() || desc.isEmpty() || contact.isEmpty() || owner.isEmpty()) {
+        /*if (name.isEmpty() || desc.isEmpty() || contact.isEmpty() || owner.isEmpty()) {
             // Handle the case where any of the fields are empty
             Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
+            return;
+        }*/
+
+        //for when business name is empty
+        if (name.isEmpty()) {
+            // Handle the case where any of the fields are empty
+            Toast.makeText(this, "Please fill in Business " +
+                    "Name", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        //for when business description is empty
+        if (desc.isEmpty()) {
+            // Handle the case where any of the fields are empty
+            Toast.makeText(this, "Please fill in Business Description", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        //for when business owner contact details is empty
+        if (contact.isEmpty()) {
+            // Handle the case where any of the fields are empty
+            Toast.makeText(this, "Please fill in contact details", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        //for when business owner field is empty
+        if (owner.isEmpty()) {
+            // Handle the case where any of the fields are empty
+            Toast.makeText(this, "Please fill the Business Owner", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -148,7 +177,7 @@ public class upload2 extends AppCompatActivity {
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(upload2.this, e.getMessage().toString(), Toast.LENGTH_SHORT);
+                        Toast.makeText(upload2.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
                     }
                 });
     }
