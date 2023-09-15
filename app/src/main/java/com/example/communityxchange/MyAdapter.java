@@ -19,6 +19,10 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * RecyclerView adapter for displaying business data.
+ */
+
 public class MyAdapter extends RecyclerView.Adapter<MyViewHolder>{
     private Context context;
     private List<DataClass> dataList;
@@ -28,20 +32,30 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder>{
         this.dataList = dataList;
     }
 
+    /**
+     * Constructor for MyAdapter.
+     *
+     * @param context  The context in which the adapter will be used.
+     * @param dataList The list of business data to display.
+     */
+
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        // Inflate the layout for each item in the RecyclerView.
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_item, parent, false);
         return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        // Load image and data into the ViewHolder.
         Glide.with(context).load(dataList.get(position).getDataImage()).into(holder.recImage);
         holder.recBusName.setText(dataList.get(position).getDataBusinessName());
         holder.recDesc.setText(dataList.get(position).getDataDescription());
         holder.recOwner.setText(dataList.get(position).getDataOwner());
 
+        // Set a click listener to open the detail activity when an item is clicked.
         holder.recCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,6 +67,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder>{
                 intent.putExtra("ContactDetails", dataList.get(holder.getAdapterPosition()).getDataContactDetails());
 
                 //for data delete
+                // Pass the key for data deletion.
                 intent.putExtra("Key",dataList.get(holder.getAdapterPosition()).getKey());
 
                 context.startActivity(intent);
@@ -66,18 +81,31 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder>{
     }
 
     //to search
+    /**
+     * Update the dataset with a new list for searching.
+     *
+     * @param searchList The list of business data matching the search criteria.
+     */
     public void searchDataList(ArrayList<DataClass> searchList){
         dataList = searchList;
         notifyDataSetChanged();
     }
 }
 
+/**
+ * ViewHolder class for business data item.
+ */
 class MyViewHolder extends RecyclerView.ViewHolder{
 
     ImageView recImage;
     TextView recBusName, recDesc, recOwner, recContact;
     CardView recCard;
 
+    /**
+     * Constructor for MyViewHolder.
+     *
+     * @param itemView The view for each item in the RecyclerView.
+     */
     public MyViewHolder(@NonNull View itemView) {
         super(itemView);
 

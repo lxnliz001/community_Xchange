@@ -30,6 +30,10 @@ import com.google.firebase.storage.UploadTask;
 import java.text.DateFormat;
 import java.util.Calendar;
 
+
+/**
+ * This activity allows users to upload business data, including an image, to Firebase.
+ */
 public class upload2 extends AppCompatActivity {
 
     ImageView uploadImage;
@@ -80,12 +84,15 @@ public class upload2 extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //pending
+                // Call saveData() method to handle data saving
                 saveData();
             }
         });
     }
 
+    /**
+     * Save business data to Firebase after validating and uploading the image.
+     */
     public void saveData(){
         //null check for the image
         if (uri == null) {
@@ -93,6 +100,8 @@ public class upload2 extends AppCompatActivity {
             Toast.makeText(this, "No Image Selected", Toast.LENGTH_SHORT).show();
             return;
         }
+
+        // Firebase storage reference for image
         StorageReference storageReference = FirebaseStorage.getInstance().getReference()
                 .child("Business" +
                         " Images").child(uri.getLastPathSegment());
@@ -103,6 +112,7 @@ public class upload2 extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
 
+        // Upload image to Firebase storage
         storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -122,6 +132,10 @@ public class upload2 extends AppCompatActivity {
             }
         });
     }
+
+    /**
+     * Upload business data to Firebase Realtime Database.
+     */
     public void uploadData(){
         //String title = uploadTopic().getText().toString();
         String name = uploadBusName.getText().toString();
@@ -171,6 +185,7 @@ public class upload2 extends AppCompatActivity {
         String currentDate = DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
 
         //Firebase
+        // Firebase: Save business data to "Businesses" using the current date as the key
         FirebaseDatabase.getInstance().getReference("Businesses").child(currentDate)
                 .setValue(dataClass).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

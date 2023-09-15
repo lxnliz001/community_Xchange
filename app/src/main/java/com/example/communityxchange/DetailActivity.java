@@ -17,6 +17,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+/**
+ * DetailActivity displays the details of a selected business.
+ * It allows users to view, delete, or edit business information.
+ */
 public class DetailActivity extends AppCompatActivity {
 
     TextView detailDesc, detailBusName, detailContact, detailOwner;

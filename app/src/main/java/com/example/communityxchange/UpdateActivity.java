@@ -28,7 +28,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-
+/**
+ * This activity allows users to update business data, including an image, in Firebase.
+ */
 public class UpdateActivity extends AppCompatActivity {
 
     ImageView updateImage;
@@ -92,7 +94,7 @@ public class UpdateActivity extends AppCompatActivity {
         updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //to save data
+                // Save data to Firebase
                 saveData();
                 Intent intent = new Intent(UpdateActivity.this, MainActivity.class);
                 startActivity(intent);
@@ -101,6 +103,10 @@ public class UpdateActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Saves data to the Firebase database and storage.
+     * If no image is selected, it displays a toast message.
+     */
     public void saveData(){
         //null check for the image
         if (uri == null) {
@@ -133,6 +139,10 @@ public class UpdateActivity extends AppCompatActivity {
             }
         });
     }
+
+    /**
+     * Upload updated business data to Firebase Realtime Database.
+     */
     public void updateData(){
         busName = updateBusName.getText().toString().trim();
         desc = updateDesc.getText().toString().trim();

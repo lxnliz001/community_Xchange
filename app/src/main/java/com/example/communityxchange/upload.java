@@ -21,6 +21,9 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This activity allows users to upload and display business data from Firebase Realtime Database.
+ */
 public class upload extends AppCompatActivity {
 
     FloatingActionButton floatingActionButton;
@@ -107,6 +110,12 @@ public class upload extends AppCompatActivity {
     }
 
     //to Search
+    // To Search
+    /**
+     * Search for business data in the list based on the entered text.
+     *
+     * @param text The text entered in the search view.
+     */
     public void searchList(String text){
         ArrayList<DataClass> searchList = new ArrayList<>();
         for(DataClass dataClass: dataList){

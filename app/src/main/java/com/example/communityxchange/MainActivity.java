@@ -19,6 +19,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * This class represents the main activity of the application.
+ * It includes functionality for interacting with Firebase Realtime Database,
+ * displaying a pop-up dialog for the "about" message, and handling button clicks.
+ */
+
 public class MainActivity extends AppCompatActivity {
 
     //create realtime database instance
@@ -35,11 +41,13 @@ public class MainActivity extends AppCompatActivity {
         myRef.setValue("This is a database testing").addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
+                // Display a success toast message
                 Toast.makeText(MainActivity.this, "Message to Database written successfully.", Toast.LENGTH_SHORT).show();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
+                // Display an error toast message
                 Toast.makeText(MainActivity.this, "Error:Message to Database NOT written.", Toast.LENGTH_SHORT).show();
             }
         });
@@ -80,7 +88,11 @@ public class MainActivity extends AppCompatActivity {
         });*/
     }//end of onCreate
 
-    //method for the dialog
+    //method for displaying a dialog
+    /**
+     * This method displays a custom dialog with information about the application.
+     * It sets the content view of the dialog, customizes its appearance, and handles the OK button click.
+     */
     private void showDialog(){
         Dialog dialog = new Dialog(this, R.style.DialogStyle    );
         dialog.setContentView(R.layout.about_dialog);
