@@ -51,7 +51,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder>{
                 intent.putExtra("BusinessName", dataList.get(holder.getAdapterPosition()).getDataBusinessName());
                 intent.putExtra("Owner", dataList.get(holder.getAdapterPosition()).getDataOwner());
                 intent.putExtra("ContactDetails", dataList.get(holder.getAdapterPosition()).getDataContactDetails());
-                //maybe take out unnecessary stuff out above
+
+                //for data delete
+                intent.putExtra("Key",dataList.get(holder.getAdapterPosition()).getKey());
 
                 context.startActivity(intent);
             }

@@ -68,6 +68,8 @@ public class upload extends AppCompatActivity {
                 dataList.clear();
                 for (DataSnapshot itemSnapshot: snapshot.getChildren()){
                     DataClass dataClass = itemSnapshot.getValue(DataClass.class);
+                    //to delete data
+                    dataClass.setKey(itemSnapshot.getKey());
                     dataList.add(dataClass);
                 }
                 adapter.notifyDataSetChanged();

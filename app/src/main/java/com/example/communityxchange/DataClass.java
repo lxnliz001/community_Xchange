@@ -9,6 +9,18 @@ public class DataClass {
     private String dataOwner;
     private String dataImage;
 
+    //for data delete
+    private String key;
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+
     //Constructor
     public DataClass(String dataBusinessName, String dataDescription,
                      String dataContactDetails,
