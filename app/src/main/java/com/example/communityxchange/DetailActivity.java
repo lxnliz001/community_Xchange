@@ -19,10 +19,10 @@ import com.google.firebase.storage.StorageReference;
 
 public class DetailActivity extends AppCompatActivity {
 
-    TextView detailDesc, detailBusName, detailContact;
+    TextView detailDesc, detailBusName, detailContact, detailOwner;
     ImageView detailImage;
     //to delete data
-    FloatingActionButton deleteButton;
+    FloatingActionButton deleteButton, editButton;
     String key = "";
     String imageUrl = "";
 
@@ -35,15 +35,19 @@ public class DetailActivity extends AppCompatActivity {
         detailImage = findViewById(R.id.detailImage);
         detailBusName = findViewById(R.id.detailBusName);
         detailContact = findViewById(R.id.detailContact);
+        detailOwner = findViewById(R.id.detailOwner);
         //to delete data
         deleteButton = findViewById(R.id.deleteButton);
+        //to edit data
+        editButton = findViewById(R.id.editButton);
+
 
         Bundle bundle  = getIntent().getExtras();
         if (bundle != null){
             detailDesc.setText(bundle.getString("Description"));
             detailBusName.setText(bundle.getString("BusinessName"));
             detailContact.setText(bundle.getString("ContactDetails"));
-
+            detailOwner.setText(bundle.getString("Owner"));
             //to delete data
             key = bundle.getString("Key");
             imageUrl = bundle.getString("Image");
@@ -69,5 +73,22 @@ public class DetailActivity extends AppCompatActivity {
                 });
             }
         });
+
+        //to update/edit data
+        editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DetailActivity.this, UpdateActivity.class)
+                        .putExtra("Description", detailDesc.getText().toString())
+                        .putExtra("BusinessName", detailBusName.getText().toString())
+                        .putExtra("ContactDetails", detailContact.getText().toString())
+                        .putExtra("Owner", detailOwner.getText().toString())
+                        .putExtra("Image", imageUrl)
+                        .putExtra("Key", key);
+
+                startActivity(intent);
+            }
+        });
+
     }
 }

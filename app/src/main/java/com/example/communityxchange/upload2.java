@@ -27,6 +27,9 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.text.DateFormat;
+import java.util.Calendar;
+
 public class upload2 extends AppCompatActivity {
 
     ImageView uploadImage;
@@ -164,8 +167,11 @@ public class upload2 extends AppCompatActivity {
 
         DataClass dataClass = new DataClass(name, desc, contact,owner, imageURL);
 
+        //Change the child from name (businessName) to currentDate --> the date will be used to accomodate updates
+        String currentDate = DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
+
         //Firebase
-        FirebaseDatabase.getInstance().getReference("Businesses").child(name)
+        FirebaseDatabase.getInstance().getReference("Businesses").child(currentDate)
                 .setValue(dataClass).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {

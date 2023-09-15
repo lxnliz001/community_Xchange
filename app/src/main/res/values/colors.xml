@@ -12,4 +12,5 @@
     <color name="inethi_red">#C00000</color>
     <color name="inethi_alt_blue">#244180</color>
     <color name="inethi_alt_blue_dark">#0436CC</color>
+    <color name="green">#00FF00</color>
 </resources>
